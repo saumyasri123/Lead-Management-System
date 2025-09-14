@@ -9,22 +9,31 @@ import leadsRouter from './routes/leads.js';
 const app = express();
 
 // CORS
-const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || 'http://localhost:5173';
+app.set('trust proxy', 1);
+
+const FRONTEND_ORIGIN = process.env.FRONTEND_ORIGIN || ''
+  .split(',')
+  .map(s => s.trim())
+  .filter(Boolean);
+
 const allowed = new Set([
   FRONTEND_ORIGIN,
   'http://localhost:5173',
   'http://127.0.0.1:5173',
 ]);
 
-app.use(
-  cors({
-    origin: (origin, cb) => {
-      if (!origin) return cb(null, true);           
-      return cb(null, allowed.has(origin));         
-    },
-    credentials: true,
-  })
-);
+const corsConfig = {
+  origin: (origin, cb) => {
+    if (!origin) return cb(null, true);               
+    if (allowed.has(origin)) return cb(null, true);   
+    return cb(new Error(`CORS: Origin not allowed: ${origin}`), false);
+  },
+  credentials: true,
+};
+
+app.use(cors(corsConfig));
+app.options('*', cors(corsConfig)); 
+
 
 app.use((req, _res, next) => { console.log(req.method, req.path); next(); });
 
@@ -68,4 +77,4 @@ mongoose
     process.exit(1);
   });
 
-console.log('Mongo connected (app) db =', mongoose.connection.name);
+// console.log('Mongo connected (app) db =', mongoose.connection.name);

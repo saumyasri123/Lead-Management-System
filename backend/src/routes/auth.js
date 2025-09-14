@@ -6,7 +6,7 @@ import { User } from '../models.js';
 const router = Router();
 
 function setAuthCookie(res, token) {
-  const isProd = process.env.NODE_ENV === 'production';
+  const isProd = process.env.NODE_ENV === 'production' || process.env.FORCE_SECURE_COOKIE === '1';
   res.cookie('token', token, {
     httpOnly: true,
     secure: isProd,
