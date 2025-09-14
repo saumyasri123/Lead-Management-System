@@ -32,7 +32,6 @@ const corsConfig = {
 };
 
 app.use(cors(corsConfig));
-app.options('*', cors(corsConfig)); 
 
 
 app.use((req, _res, next) => { console.log(req.method, req.path); next(); });
