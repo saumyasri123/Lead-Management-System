@@ -1,0 +1,150 @@
+:root {
+    --primary: #2563eb;
+    --border: #e5e7eb;
+    --muted: #6b7280;
+    --radius: 12px;
+}
+
+.leads-page {
+    padding: 1rem;
+}
+
+.leads-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .75rem;
+}
+
+.leads-title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #111827;
+    padding: .45rem .8rem;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background: #f8fafc;
+    color: #2563eb;
+}
+
+.btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.04);
+}
+
+.btn-sm {
+    padding: .42rem .7rem;
+    font-size: .95rem;
+}
+
+.filters {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: .75rem;
+    margin-bottom: .75rem;
+    background: #fff;
+}
+
+.filters-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.control {
+    padding: .45rem .6rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.control.narrow {
+    width: 160px;
+}
+
+.grid-wrap {
+    height: auto;
+}
+
+.ag-theme-quartz.leads-grid {
+    --ag-row-height: 44px;
+    --ag-header-height: 44px;
+    --ag-font-size: 14px;
+}
+
+.ag-theme-quartz.leads-grid .ag-cell {
+    display: flex;
+    align-items: center;
+}
+
+.actions {
+    display: inline-flex;
+    gap: .7rem;
+}
+
+.action-btn {
+    padding: .3rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: var(--primary);
+    color: #fff;
+}
+
+.action-btn:hover {
+    background: #dbe4ed;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.action-danger {
+    border-color: #ef4444;
+    color: #fff;
+    background: #b91c1c
+}
+
+.action-danger:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.pager {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: .75rem;
+}
+
+.pager-info {
+    color: var(--muted);
+}
+
+.pager-actions {
+    display: flex;
+    gap: .5rem;
+}
